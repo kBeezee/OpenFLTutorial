@@ -99,12 +99,14 @@ class Main extends Sprite
 		ballMovement = new Point(0, 0);
 
 		//Listeners
-		this.addEventListener(Event.ENTER_FRAME, everyFrame); //
+		this.addEventListener(Event.ENTER_FRAME, GameLoop);
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, keyUp);
 	}
 
-	private function everyFrame(event:Event):Void {
+
+	//This is the game loop, which is called as a listener in the init function.
+	private function GameLoop(event:Event):Void {
 		if (currentGameState == Playing){
 			if (arrowKeyUp) {
 				platform1.y -= platformSpeed;
@@ -164,8 +166,8 @@ class Main extends Sprite
 	private function keyDown(event:KeyboardEvent):Void {
 		if (currentGameState == Paused && event.keyCode == 32) {
 			setGameState(Playing);
-		} else if (event.keyCode == 27) {
-			System.exit(0); //Close when you press escape.
+		} else if (event.keyCode == 27) { //Close when you press escape.
+			System.exit(0);
 		} else if (event.keyCode == 38) { // Up
 			arrowKeyUp = true;
 		} else if (event.keyCode == 40) { //Down
