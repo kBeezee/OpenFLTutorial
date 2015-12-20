@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="FlPong" package="com.sample.flpong" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="FlPong" />
+	
+	<source path="Source" />
+
+	<window background="#333333" fps="60" />
+	<window width="500" height="500" unless="mobile" />
+
+	<haxelib name="openfl" />
+	
+	<assets path="Assets" rename="assets" />
+	
+</project>
