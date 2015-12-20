@@ -91,7 +91,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "31",
+			build: "52",
 			company: "Company Name",
 			file: "FlPong",
 			fps: 60,

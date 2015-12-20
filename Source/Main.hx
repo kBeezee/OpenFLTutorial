@@ -55,12 +55,12 @@ class Main extends Sprite
 		arrowKeyDown = false;
 		platformSpeed = 7;
 
-		platform1 = new Platform();
+		platform1 = new Platform(50, 15);
 		platform1.x = 5;
 		platform1.y = 200;
 		this.addChild(platform1);
 
-		platform2 = new Platform();
+		platform2 = new Platform(100, 15);
 		platform2.x = 480;
 		platform2.y = 200;
 		this.addChild(platform2);
@@ -88,7 +88,7 @@ class Main extends Sprite
 		messageField.width = 500;
 		messageField.y = 450;
 		messageField.defaultTextFormat = messageFormat;
-		messageField.selectable = false;
+		messageField.selectable = true;
 		messageField.text = "Press SPACE to start\nUse ARROW KEYS to move your platform";
 
 		scorePlayer = 0;
@@ -125,14 +125,15 @@ class Main extends Sprite
 			//Movement
 			ball.x += ballMovement.x;
 			ball.y += ballMovement.y;
-			if (ball.y < 5 || ball.y > 495)ballMovement.y *= -1;
+			if (ball.y < 5 || ball.y > 495) ballMovement.y *= -1;
 			if (ball.x < 5) winGame(AI);
 			if (ball.x > 495) winGame(Human);
-			if (ballMovement.x < 0 && ball.x < 30 && ball.y >= platform1.y && ball.y <= platform1.y + 100) {
+
+			if (ballMovement.x < 0 && ball.x < 30 && ball.y >= platform1.y && ball.y <= platform1.y + platform1.l) {
 				bounceBall();
 				ball.x = 30;
 			}
-			if (ballMovement.x > 0 && ball.x > 470 && ball.y >= platform2.y && ball.y <= platform2.y + 100) {
+			if (ballMovement.x > 0 && ball.x > 470 && ball.y >= platform2.y && ball.y <= platform2.y + platform2.l) {
 				bounceBall();
 				ball.x = 470;
 			}
